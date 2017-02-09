@@ -1,4 +1,4 @@
-import {addTodo} from './todoHelpers';
+import {addTodo, generateId} from './todoHelpers';
 
 test('addTodo should add the passed todo to the list', () => {
   const startTodos = [
@@ -30,4 +30,10 @@ test('addTodo should not mutate the existing array', () => {
 
   const result = addTodo(startTodos, newTodo);
   expect(result).not.toBe(startTodos);
+});
+
+test('generateId should return a number', () => {
+  const id = generateId();
+  expect(typeof(id)).toBe('number');
+  expect(id.toString().length).toEqual(5);
 });
