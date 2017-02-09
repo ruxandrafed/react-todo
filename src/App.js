@@ -3,6 +3,16 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  constructor() {
+    super()
+    this.state = {
+      todos: [
+        {id: 1, name: 'Learn JsX', isComplete: true},
+        {id: 2, name: 'Build an awesome app', isComplete: false},
+        {id: 3, name: 'Ship it!', isComplete: false}
+      ]
+    }
+  }
   render() {
     return (
       <div className="App">
@@ -16,9 +26,12 @@ class App extends Component {
           </form>
           <div className="Todo-List">
             <ul>
-              <li><input type="checkbox" />Learn JsX</li>
-              <li><input type="checkbox" />Build an awesome app</li>
-              <li><input type="checkbox" />Ship it</li>
+              {this.state.todos.map(todo =>
+                <li key={todo.id} >
+                  <input type="checkbox" defaultChecked={todo.isComplete}/>
+                  {todo.name}
+                </li>)
+              }
             </ul>
           </div>
         </div>
