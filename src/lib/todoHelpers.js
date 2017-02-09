@@ -1,3 +1,1 @@
-export const addTodo = (todos, newTodo) => {
-  return todos.concat(newTodo);
-};
+export const addTodo = (todos, newTodo) => todos.concat(newTodo);
