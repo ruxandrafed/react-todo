@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import {TodoForm, TodoList} from './components/todo';
-import {addTodo, generateId, findById, toggleTodo, updateTodo} from './lib/todoHelpers';
+import {addTodo, generateId, findById, toggleTodo, updateTodo, removeTodo} from './lib/todoHelpers';
 import {pipe, partial} from './lib/utils';
 
 class App extends Component {
   state = {
     todos: [
-      {id: 1, name: 'Learn JsX', isComplete: true},
-      {id: 2, name: 'Build an awesome app', isComplete: false},
-      {id: 3, name: 'Ship it!', isComplete: false}
+      {id: 12323, name: 'Learn JsX', isComplete: true},
+      {id: 23124, name: 'Build an awesome app', isComplete: false},
+      {id: 32412, name: 'Ship it!', isComplete: false}
     ],
     currentTodo: ''
   };
@@ -22,7 +22,7 @@ class App extends Component {
       id: newId,
       name: this.state.currentTodo,
       isComplete: false
-    }
+    };
     const updatedTodos = addTodo(this.state.todos, newTodo);
     this.setState({
       todos: updatedTodos,
@@ -36,7 +36,7 @@ class App extends Component {
     event.preventDefault();
     this.setState({
       errorMessage: 'Please supply a todo name!'
-    })
+    });
   };
 
   handleInputChange = (event) => {
@@ -52,7 +52,17 @@ class App extends Component {
     const getUpdatedTodos = pipe(findById, toggleTodo, partial(updateTodo, this.state.todos));
     this.setState({
       todos: getUpdatedTodos(id, this.state.todos)
-    })
+    });
+  };
+
+  handleRemove = (id, event) => {
+    event.preventDefault();
+    console.log('before ', this.state.todos);
+    const updatedTodos = removeTodo(this.state.todos, id);
+    this.setState({
+      todos: updatedTodos
+    });
+    console.log('after ', updatedTodos);
   };
 
   render() {
@@ -73,6 +83,7 @@ class App extends Component {
           <TodoList
             todos={this.state.todos}
             handleToggle={this.handleToggle}
+            handleRemove={this.handleRemove}
           />
         </div>
       </div>

@@ -14,3 +14,11 @@ export const updateTodo = (todos, updatedTodo) => {
     ...todos.slice(updatedIndex+1)
   ]
 };
+
+export const removeTodo = (todos, id) => {
+  const removedIndex = todos.findIndex(todo => todo.id === id);
+  return [
+    ...todos.slice(0,removedIndex),
+    ...todos.slice(removedIndex+1)
+  ]
+};
