@@ -97,7 +97,7 @@ test('removeTodo should remove an item by id', () => {
   const removedId = 2;
   const expectedTodos =  [
     {id: 1, name: 'one', isComplete: false},
-    {id: 3, name: 'three', isComplete: false}
+    {id: 3, name: 'three',  isComplete: false}
   ];
 
   const result = removeTodo(startTodos, removedId);
