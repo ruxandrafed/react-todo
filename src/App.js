@@ -57,12 +57,10 @@ class App extends Component {
 
   handleRemove = (id, event) => {
     event.preventDefault();
-    console.log('before ', this.state.todos);
     const updatedTodos = removeTodo(this.state.todos, id);
     this.setState({
       todos: updatedTodos
     });
-    console.log('after ', updatedTodos);
   };
 
   render() {

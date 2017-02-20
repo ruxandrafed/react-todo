@@ -94,13 +94,13 @@ test('removeTodo should remove an item by id', () => {
     {id: 2, name: 'two', isComplete: false},
     {id: 3, name: 'three', isComplete: false}
   ];
-  const removedTodo = {id: 2, name: 'two', isComplete: true};
+  const removedId = 2;
   const expectedTodos =  [
     {id: 1, name: 'one', isComplete: false},
     {id: 3, name: 'three', isComplete: false}
   ];
 
-  const result = removeTodo(startTodos, removedTodo);
+  const result = removeTodo(startTodos, removedId);
   expect(result).toEqual(expectedTodos);
 });
 
