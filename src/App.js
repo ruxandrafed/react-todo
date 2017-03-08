@@ -35,7 +35,8 @@ class App extends Component {
       currentTodo: '',
       errorMessage: ''
     });
-    createTodo(newTodo);
+    createTodo(newTodo)
+      .then(() => this.setState({message: 'Todo added'}));
   };
 
 
@@ -81,6 +82,7 @@ class App extends Component {
         </div>
         <div className="Todo-App">
           {this.state.errorMessage && <span className="error">{this.state.errorMessage}</span>}
+          {this.state.message && <span className="success">{this.state.message}</span>}
           <TodoForm
             handleInputChange={this.handleInputChange}
             currentTodo={this.state.currentTodo}
