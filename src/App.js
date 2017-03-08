@@ -4,16 +4,18 @@ import './App.css';
 import {TodoForm, TodoList, Footer} from './components/todo';
 import {addTodo, generateId, findById, toggleTodo, updateTodo, removeTodo, filterTodos} from './lib/todoHelpers';
 import {pipe, partial} from './lib/utils';
+import {loadTodos} from './lib/todoService';
 
 class App extends Component {
   state = {
-    todos: [
-      {id: 12323, name: 'Learn JsX', isComplete: true},
-      {id: 23124, name: 'Build an awesome app', isComplete: false},
-      {id: 32412, name: 'Ship it!', isComplete: false}
-    ],
+    todos: [],
     currentTodo: ''
   };
+
+  componentDidMount() {
+    loadTodos()
+      .then(todos => this.setState({todos}));
+  }
 
   static contextTypes = {
     route: React.PropTypes.string
