@@ -27,6 +27,13 @@ export class Router extends Component {
     }
   };
 
+  componentDidMount() {
+    // this is firing when we use back/fwd buttons
+    window.onpopstate = () => {
+      this.setState({route: getCurrentPath()})
+    }
+  }
+
   render() {
     return <div>{this.props.children}</div>
   };
