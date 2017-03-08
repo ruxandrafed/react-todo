@@ -1,0 +1,24 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "name": "Drink coffee",
+      "isComplete": true
+    },
+    {
+      "id": 2,
+      "name": "Sleep",
+      "isComplete": true
+    },
+    {
+      "id": 3,
+      "name": "Eat pho",
+      "isComplete": false
+    },
+    {
+      "id": 4,
+      "name": "Learn new stuff",
+      "isComplete": false
+    }
+  ]
+}
